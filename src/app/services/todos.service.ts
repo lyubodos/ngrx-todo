@@ -7,14 +7,12 @@ import { ToDo } from '../data/todo.data';
 export class ToDoListService {
   private todos: ToDo[] = [
     {
-      todo: 'Cook a meal',
-      error: null,
-      status: 'Completed',
+      id: "11-02-22",
+      content: 'Cook a meal',
     },
     {
-      todo: 'Do a a deadlift',
-      error: null,
-      status: 'Pending',
+      id: "12-02-22",
+      content: 'Do a a deadlift',
     },
   ];
 
