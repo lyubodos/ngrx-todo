@@ -1,26 +1,17 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <div class="row">
+      <div class="row" style="text-align: center;">
         <div class="col-xs-6 col-md-offset-3">
           <h1>Simple To-Do List</h1>
-          <input type="text" class="form-control" />
-          <button class="btn btn-success">Add Task</button>
+          <input type="text" class="form-control" #inputData/>
+          <button class="btn btn-success" type="button" (click)="onAddTask()">Add Task</button>
         </div>
       </div>
       <div class="row tasks-row">
-        <div class="col-xs-12 task">
-          <div class="row">
-            <div class="col-xs-6">Col-SM-6</div>
-            <div class="col-xs-6">
-              <button class="btn btn-danger">Delete</button>
-            </div>
-          </div>
+        <div class="col-xs-12 task" *ngFor="let todo of todos">
+          <app-to-do-list [todo]="todo"></app-to-do-list>
         </div>
-        <div class="col-sm-12 task">
-          <i class="bi bi-power"></i>
-        </div>
-        <div class="col-sm-12 task">Col-SM-</div>
       </div>
     </div>
   </div>
