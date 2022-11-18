@@ -12,12 +12,13 @@
       </div>
       <div class="row tasks-row">
         <div *ngIf="todos.length > 0; else noTodos">
-          <div class="col-xs-12 task" *ngFor="let todo of todos; let i = index">
-            <app-to-do-list [todo]="todo" [index]="i"></app-to-do-list>
+          <div class="col-xs-12 task" *ngFor="let todo of todos">
+            <app-to-do-list [todo]="todo"></app-to-do-list>
           </div>
         </div>
-        <ng-template #noTodos><h1>No tasks added to the list...</h1></ng-template>
+        <ng-template #noTodos><h1></h1></ng-template>
       </div>
     </div>
   </div>
 </div>
+

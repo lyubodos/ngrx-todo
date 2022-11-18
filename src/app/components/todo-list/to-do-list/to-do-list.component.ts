@@ -14,10 +14,10 @@ export class ToDoListComponent implements OnInit {
 
   constructor(private todosService: ToDoListService) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   public onDelete() {
-    this.todosService.deleteToDo(this.index);
+    let indexToRemove = this.todo.id-1;
+    this.todosService.deleteToDo(indexToRemove);
   }
 }

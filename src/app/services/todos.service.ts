@@ -28,7 +28,7 @@ export class ToDoListService {
     this.onToDosChanged.next(this.todos.slice());
   }
 
-  public deleteToDo(id: number){
+  public deleteToDo(id: number) {
     this.todos.splice(id, 1);
     this.onToDosChanged.next(this.todos.slice());
   }
