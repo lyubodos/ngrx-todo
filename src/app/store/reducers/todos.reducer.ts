@@ -5,11 +5,11 @@ import { addToDo, loadToDos } from '../actions/todos.action';
 
 export const initialState: ToDosState = {
   todos: [ {
-    id: "11-02-22",
+    id: 0,
     content: 'Cook a meal',
   },
   {
-    id: "12-02-22",
+    id: 1,
     content: 'Do a a deadlift',
   }],
   error: null,
@@ -22,6 +22,6 @@ export const toDoReducer = createReducer(
   on(loadToDos, (state) => state),
   on(addToDo, (state, { content }) => ({
     ...state,
-    todos: [...state.todos, { id: Date.now().toString(), content }],
+    todos: [...state.todos, { id: 2, content }],
   }))
 );

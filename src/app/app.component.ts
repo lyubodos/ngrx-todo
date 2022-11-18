@@ -1,10 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { ToDo } from './data/todo.data';
 import { ToDoListService } from './services/todos.service';
 import { addToDo, loadToDos } from './store/actions/todos.action';
-import { Observable } from 'rxjs';
-import { timeStamp } from 'console';
+
 
 @Component({
   selector: 'app-root',
@@ -14,20 +12,27 @@ import { timeStamp } from 'console';
 export class AppComponent implements OnInit {
   @ViewChild('inputData') inputData: ElementRef;
 
-  public allToDos$: Observable<ToDo[]>;
   public todos: ToDo[] = [];
 
-  constructor(private todosService: ToDoListService, private store: Store<{allToDos: ToDo[]}>) {}
+  constructor(private todosService: ToDoListService) {}
 
   ngOnInit(): void {
-    this.store.dispatch(loadToDos());
-    this.allToDos$.subscribe(todos  => {
+    this.todos = this.todosService.getAllToDos();
+
+    this.todosService.onToDosChanged.subscribe(todos => {
       this.todos = todos;
     })
-    
   }
 
   public onAddTask() {
-    this.store.dispatch(addToDo({content: "string"}));
+    let inputData = this.inputData.nativeElement.value;
+    let lastToDo = this.todos[this.todos.length-1];
+    let indexOfLastToDo: number = this.todos.indexOf(lastToDo);
+
+    if(inputData !== ''){
+      this.todosService.addToDo({id: indexOfLastToDo+2, content: inputData});
+    }
+
+    this.inputData.nativeElement.value = '';
   }
 }

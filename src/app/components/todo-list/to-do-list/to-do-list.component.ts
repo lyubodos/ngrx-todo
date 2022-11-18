@@ -10,10 +10,14 @@ import { ToDoListService } from 'src/app/services/todos.service';
 export class ToDoListComponent implements OnInit {
 
   @Input() public todo: ToDo;
+  @Input() public index: number;
 
-  constructor() { }
+  constructor(private todosService: ToDoListService) { }
 
   ngOnInit(): void {
   }
 
+  public onDelete() {
+    this.todosService.deleteToDo(this.index);
+  }
 }
